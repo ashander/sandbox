@@ -3,10 +3,10 @@
 Monitoring
 ======
 
-Jaime Ashander
------
+**Jaime Ashander**
 
-## What we monitor## 
+
+##What we monitor##
 
 ### Habitat###
 * restored
@@ -15,9 +15,9 @@ Jaime Ashander
 
 ### Biodiversity ###
 
-### Resources ### 
+### Resources ###
 
-### Species (of concern) ### 
+### Species (of concern) ###
 
 ## Issues in mointoring populations ##
 
@@ -35,9 +35,15 @@ Jaime Ashander
 
 ## Examples ## 
 
-### status _v_ trend ### 
-* Bayesian example: random walk 
-* power?
+### status _v_ trend ###
+
+![Status \\(\implies\\) Trend](dd-tradeoff.png)
+
+>From Deutschman et al 2008 Tech Rpt.
+
+### Bayesian example: random walk ###
+
+### power ###
 
 
 

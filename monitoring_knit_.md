@@ -49,7 +49,7 @@ Monitoring
 
 
   
-<!--begin.rcode plot1,echo=FALSE
+<!--begin.rcode plot1,echo=FALSE,cache=TRUE
 sigma = 2
 
 pop= function(x, sig){ x + rnorm(n=1,sd=sig)}
