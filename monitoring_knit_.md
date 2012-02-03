@@ -38,6 +38,7 @@ sigma = 0.1
 a = 10
 b = 9
 FISH=0.3
+TIME=1:100
 params = c(a,b,sigma)
 
 
@@ -46,7 +47,13 @@ poprep=function(init){x=numeric(100); x[1]=init; for(i in 1:99){x[i+1] = pop.bh(
 outs = sapply(rep(1,REPS), poprep)
 plot(0,0, pch='', ylim=c(-.5,1.5),xlim=c(0,100), xlab='time', ylab='stock')
 abline(h=(a-1)/b)
-for(i in 1:dim(outs)[2]){lines(1:100,outs[,i],col=col.alpha('grey',0.9))}
+for(i in 1:dim(outs)[2]){lines(TIME,outs[,i],col=col.alpha('grey',0.9))}
+lines(TIME,rowMeans(outs))
+
+
+f.d <- as.data.frame(outs)
+names(r.f) = paste("pop", 1:REPS, sep='')
+f.d$time = TIME
 
 end.rcode-->
 
@@ -63,9 +70,16 @@ REPS=10
 
 poprep=function(init){x=numeric(100); x[1]=init; for(i in 1:99){x[i+1] = pop.bh(x[i], h=FISH,p=params)}; return(x)}
 outs = sapply(rep(0.1,REPS), poprep)
+
 plot(0,0, pch='', ylim=c(-.5,1.5),xlim=c(0,100), xlab='time', ylab='population')
 abline(h=(a-1)/b)
-for(i in 1:dim(outs)[2]){lines(1:100,outs[,i],col=col.alpha('grey',0.9))}
+for(i in 1:dim(outs)[2]){lines(TIME,outs[,i],col=col.alpha('grey',0.9))}
+lines(TIME,rowMeans(outs))
+
+r.d <- as.data.frame(outs)
+names(r.d) = paste("pop", 1:REPS,sep='')
+r.d$time <- TIME
+
 end.rcode-->
 
 ## Issues in mointoring populations ##
@@ -109,9 +123,79 @@ Time:
 Tradeoff from status (left) to trend (right) with constant effort 
 >From Deutschman et al 2008 Tech Rpt.
 
-### Bayesian example: random walk ###
 
-### power ###
+### Applied  ###
+
+  
+
+
+## Other issues ##
+
+* power
+* identifiability              
+              
+### Example###
+
+
+**Likelihood**
+  
+<!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE  
+require(bbmle)
+time =10
+
+require(ggplot2)
+r.m <- melt(r.d, id.vars=c('time'))
+g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
+
+
+
+for(time in 1:9*10){
+  sub.d <- list(tot=t(sample(r.d[time,1:10], size=5)))
+  ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
+  post.t <- sample.naive.posterior(ml.t)
+  post.t$time = time
+  g <- g + geom_boxplot(aes(time, mu), data=post.t)
+         
+}
+g
+
+end.rcode-->
+  
+Likelihood-based, treated like independent samples (no population model)
+
+
+
+**Bayes**
+  
+<!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE  
+require(bbmle)
+time =10
+
+require(ggplot2)
+r.m <- melt(r.d, id.vars=c('time'))
+g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
+
+prior <- NULL
+for(time in 1:9*10){
+  sub.d <- list(tot=t(sample(r.d[time,1:10], size=5)))
+  ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
+  post.t <- sample.naive.posterior(ml.t)
+  if(is.null(prior)){
+    prior <- c(coef(ml.t)['mu'], coef(ml.t)['sigma'])
+    post.t$mu <- sample(post.t$mu, replace=TRUE, prob=dnorm(post.t$mu, mean=prior[1], sd=prior[2]))
+  }
+  post.t$time = time
+  g <- g + geom_boxplot(aes(time, mu), data=post.t)
+         
+}
+g
+
+end.rcode-->
+  
+Bayesian from independent samples
+
+
+  
 
 # Knitr #
 
@@ -124,4 +208,6 @@ require(knitr)
 opts_knit$set(out.format='gfm',base.url="https://github.com/ashander/sandbox/raw/master/")
 knit(paste(getwd(),'monitoring_knit_.md',sep='/'))
 end.rcode-->
+
+
 
