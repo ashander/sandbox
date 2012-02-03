@@ -92,84 +92,6 @@ Tradeoff from status (left) to trend (right) with constant effort
 
 **Likelihood**
   
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
 ![plot of chunk est-recov-lik](https://github.com/ashander/sandbox/raw/master/est-recov-lik.png)
 
   
@@ -179,87 +101,6 @@ Likelihood-based, treated like independent samples (no population model)
 
 **Bayes**
   
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
-```
-## Warning message: sd(<matrix>) is deprecated.
-##  Use apply(*, 2, sd) instead.
-```
-```
-## Warning message: NaNs produced
-```
 ![plot of chunk est-recov-lik](https://github.com/ashander/sandbox/raw/master/est-recov-lik.png)
 
   
@@ -283,12 +124,4 @@ knit(paste(getwd(), "monitoring_knit_.md", sep = "/"))
 
 
 
-
-  <!--begin.rcode bb,echo=FALSE,cache=TRUE,eval=FALSE
-
-for(i in 1:10){
-  l <- lm(r.d[,i]~time, data=r.d)
-  coef(l)
-  
-}
 

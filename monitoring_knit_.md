@@ -139,7 +139,7 @@ Tradeoff from status (left) to trend (right) with constant effort
 
 **Likelihood**
   
-<!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE  
+<!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE,warning=FALSE  
 require(bbmle)
 time =10
 
@@ -167,7 +167,7 @@ Likelihood-based, treated like independent samples (no population model)
 
 **Bayes**
   
-<!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE  
+<!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE,warning=FALSE  
 require(bbmle)
 time =10
 
