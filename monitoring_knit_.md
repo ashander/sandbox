@@ -167,9 +167,7 @@ Likelihood-based, treated like independent samples (no population model)
 **Bayes**
   
 <!--begin.rcode est-recov-bayes,echo=FALSE,cache=TRUE,warning=FALSE  
-r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
-
 prior <- NULL
 for(time in 1:9*10){
   sub.d <- list(tot=t(sample(r.d[time,1:10], size=5)))
@@ -180,6 +178,7 @@ for(time in 1:9*10){
   }
   if(!is.null(prior)){
     post.t$mu <- sample(post.t$mu, replace=TRUE, prob=dnorm(post.t$mu, mean=prior[1], sd=prior[2]))
+    prior <- c(coef(ml.t)['mu'], coef(ml.t)['sigma'])
   }
   post.t$time = time
   g <- g + geom_boxplot(aes(time, mu), data=post.t)
