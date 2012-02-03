@@ -85,13 +85,13 @@ Three "populations" sampled every 30 units
 
 
   
+```
+## Error: replacement has 1000 rows, data has 100
+```
 ![plot of chunk est-recov-lik](https://github.com/ashander/sandbox/raw/master/est-recov-lik.png)
 
   
 **Likelihood**, treated like independent samples (no population model)
-
-
-
 
   
 ![plot of chunk est-recov-bayes](https://github.com/ashander/sandbox/raw/master/est-recov-bayes.png)

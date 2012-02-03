@@ -136,9 +136,10 @@ Three "populations" sampled every 30 units
 require(bbmle)
 require(ggplot2)
 SAMPLE=c(3,6,9)
-
+r.d$mean <- 
 r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
+g <- g+geom_smooth(aes(time,value), data=r.m)
 for(time in SAMPLE*10){
   sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
   ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
@@ -153,12 +154,10 @@ end.rcode-->
   
 **Likelihood**, treated like independent samples (no population model)
 
-
-
-
   
 <!--begin.rcode est-recov-bayes,echo=FALSE,cache=TRUE,warning=FALSE  
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
+g <- g+geom_smooth(aes(time,value), data=r.m)
 prior <- NULL
 for(time in SAMPLE*10){
   sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
