@@ -43,14 +43,12 @@ Jaime Ashander
 
 
   
-<!--begin.rcode,echo=FALSE
+<!--begin.rcode plot1,echo=FALSE
 sigma = 2
 
 pop= function(x, sig){ x + rnorm(n=1,sd=sig)}
 
 poprep=function(init){x=numeric(100); x[1]=init; for(i in 1:99){x[i+1] = pop(x[i], sigma)}; return(x)}
-
-sapply(rep(10,100), poprep)
 
 outs = sapply(rep(10,100), poprep)
 
@@ -63,7 +61,7 @@ end.rcode-->
 
 
 <!--begin.rcode,echo=FALSE
-require(ggplot2)
+#require(ggplot2)
 
 
 end.rcode-->
@@ -77,7 +75,7 @@ Need to use not only the options below
 
 <!--begin.rcode eval=FALSE
 require(knitr)
-opts_knit$set(out.format='gfm',base.url="https://github.com/ashander/scifundstats/raw/master/")
+opts_knit$set(out.format='gfm',base.url="https://github.com/ashander/sandbox/raw/master/")
 knit(paste(getwd(),'monitoring_knit_.md',sep='/'))
 end.rcode-->
 
