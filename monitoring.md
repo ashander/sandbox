@@ -79,18 +79,6 @@ Tradeoff from status (left) to trend (right) with constant effort
 
 ### Applied  ###
 
-  
-
-
-## Other issues ##
-
-* power
-* identifiability              
-              
-### Example###
-
-
-
 #### Status ####
 
 Three "populations" sampled every 30 units
@@ -126,6 +114,11 @@ One "population" sampled every 10 units ...
 **Bayes**
 
 
+## Related issues ##
+
+* power
+* identifiability              
+              
   
 
 # Knitr #

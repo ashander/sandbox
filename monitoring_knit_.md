@@ -126,18 +126,6 @@ Tradeoff from status (left) to trend (right) with constant effort
 
 ### Applied  ###
 
-  
-
-
-## Other issues ##
-
-* power
-* identifiability              
-              
-### Example###
-
-
-
 #### Status ####
 
 Three "populations" sampled every 30 units
@@ -147,10 +135,11 @@ Three "populations" sampled every 30 units
 <!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE,warning=FALSE  
 require(bbmle)
 require(ggplot2)
+SAMPLE=c(3,6,9)
 
 r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
-for(time in c(1,3,9)*10){
+for(time in SAMPLE*10){
   sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
   ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
   post.t <- sample.naive.posterior(ml.t)
@@ -171,7 +160,7 @@ end.rcode-->
 <!--begin.rcode est-recov-bayes,echo=FALSE,cache=TRUE,warning=FALSE  
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
 prior <- NULL
-for(time in c(1,3,9)*10){
+for(time in SAMPLE*10){
   sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
   ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
   post.t <- sample.naive.posterior(ml.t)
@@ -241,6 +230,11 @@ end.rcode-->
 **Bayes**
 
 
+## Related issues ##
+
+* power
+* identifiability              
+              
   
 
 # Knitr #
