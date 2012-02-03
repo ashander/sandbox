@@ -37,8 +37,10 @@ Monitoring
 
 ### status _v_ trend ###
 
-![Status \\(\implies\\) Trend](dd-tradeoff.png)
 
+![](https://github.com/ashander/sandbox/raw/master/dd-tradeoff.png)
+
+Status \\(\implies\\) Trend
 >From Deutschman et al 2008 Tech Rpt.
 
 ### Bayesian example: random walk ###
