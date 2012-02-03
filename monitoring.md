@@ -1,4 +1,3 @@
-
 Monitoring
 ======
 
@@ -36,7 +35,7 @@ Monitoring
 
 ### status _v_ trend ###
 
-![Status \\(\implies\\) Trend](https://github.com/ashander/sandbox/raw/master/dd-tradeoff.png)
+![Tradeoff from status (left) to trend (right)](https://github.com/ashander/sandbox/raw/master/dd-tradeoff.png)
 
 >From Deutschman et al 2008 Tech Rpt.
 
