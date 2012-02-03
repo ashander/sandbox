@@ -166,7 +166,7 @@ Likelihood-based, treated like independent samples (no population model)
 
 **Bayes**
   
-<!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE,warning=FALSE  
+<!--begin.rcode est-recov-bayes,echo=FALSE,cache=TRUE,warning=FALSE  
 r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
 

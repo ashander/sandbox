@@ -101,7 +101,7 @@ Likelihood-based, treated like independent samples (no population model)
 
 **Bayes**
   
-![plot of chunk est-recov-lik](https://github.com/ashander/sandbox/raw/master/est-recov-lik.png)
+![plot of chunk est-recov-bayes](https://github.com/ashander/sandbox/raw/master/est-recov-bayes.png)
 
   
 Bayesian from independent samples
