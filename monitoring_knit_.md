@@ -46,7 +46,7 @@ poprep=function(init){x=numeric(100); x[1]=init; for(i in 1:99){x[i+1] = pop.bh(
 outs = sapply(rep(1,REPS), poprep)
 plot(0,0, pch='', ylim=c(-.5,1.5),xlim=c(0,100), xlab='time', ylab='stock')
 abline(h=(a-1)/b)
-for(i in 1:length(outs)){ lines(1:100,outs[,i],col=col.alpha('grey',0.9))}
+for(i in 1:dim(outs)[2]){lines(1:100,outs[,i],col=col.alpha('grey',0.9))}
 
 end.rcode-->
 
@@ -65,7 +65,7 @@ poprep=function(init){x=numeric(100); x[1]=init; for(i in 1:99){x[i+1] = pop.bh(
 outs = sapply(rep(0.1,REPS), poprep)
 plot(0,0, pch='', ylim=c(-.5,1.5),xlim=c(0,100), xlab='time', ylab='population')
 abline(h=(a-1)/b)
-for(i in 1:length(outs)){ lines(1:100,outs[,i],col=col.alpha('grey',0.9))}
+for(i in 1:dim(outs)[2]){lines(1:100,outs[,i],col=col.alpha('grey',0.9))}
 end.rcode-->
 
 ## Issues in mointoring populations ##
@@ -112,15 +112,6 @@ Tradeoff from status (left) to trend (right) with constant effort
 ### Bayesian example: random walk ###
 
 ### power ###
-
-  
-
-<!--begin.rcode,echo=FALSE
-#require(ggplot2)
-
-
-end.rcode-->
-
 
 # Knitr #
 

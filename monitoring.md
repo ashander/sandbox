@@ -25,20 +25,14 @@ Fishery example
 
 
 
-![plot of chunk resources](https://github.com/ashander/sandbox/raw/master/resources.png)```
-## Error: subscript out of bounds
-```
-
+![plot of chunk resources](https://github.com/ashander/sandbox/raw/master/resources.png)
 
 
 ### Species (of concern) ###
 
 Recovery example
   
-![plot of chunk recovery](https://github.com/ashander/sandbox/raw/master/recovery.png)```
-## Error: subscript out of bounds
-```
-
+![plot of chunk recovery](https://github.com/ashander/sandbox/raw/master/recovery.png)
 
 
 ## Issues in mointoring populations ##
@@ -85,12 +79,6 @@ Tradeoff from status (left) to trend (right) with constant effort
 ### Bayesian example: random walk ###
 
 ### power ###
-
-  
-
-
-
-
 
 # Knitr #
 
