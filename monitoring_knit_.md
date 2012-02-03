@@ -124,6 +124,9 @@ Tradeoff from status (left) to trend (right) with constant effort
 >From Deutschman et al 2008 Tech Rpt.
 
 
+![](https://github.com/ashander/sandbox/raw/master/power.png)
+
+
 ### Applied  ###
 
 #### Status ####
@@ -232,6 +235,8 @@ end.rcode-->
 ## Related issues ##
 
 * power
+
+
 * identifiability              
               
   
