@@ -90,21 +90,40 @@ Tradeoff from status (left) to trend (right) with constant effort
 ### Example###
 
 
-**Likelihood**
+
+#### Status ####
+
+Three "populations" sampled every 30 units
+
+
   
 ![plot of chunk est-recov-lik](https://github.com/ashander/sandbox/raw/master/est-recov-lik.png)
 
   
-Likelihood-based, treated like independent samples (no population model)
+**Likelihood**, treated like independent samples (no population model)
 
 
 
-**Bayes**
+
   
 ![plot of chunk est-recov-bayes](https://github.com/ashander/sandbox/raw/master/est-recov-bayes.png)
 
   
-Bayesian from independent samples
+**Bayes**, treated like "independent" samples
+
+
+#### Trend ####
+
+One "population" sampled every 10 units ...
+
+![plot of chunk est-recov-lik-trend](https://github.com/ashander/sandbox/raw/master/est-recov-lik-trend.png)
+
+**Likelihood**
+
+
+![plot of chunk est-recov-bayes-trend](https://github.com/ashander/sandbox/raw/master/est-recov-bayes-trend.png)
+
+**Bayes**
 
 
   

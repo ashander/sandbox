@@ -137,7 +137,12 @@ Tradeoff from status (left) to trend (right) with constant effort
 ### Example###
 
 
-**Likelihood**
+
+#### Status ####
+
+Three "populations" sampled every 30 units
+
+
   
 <!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE,warning=FALSE  
 require(bbmle)
@@ -145,11 +150,8 @@ require(ggplot2)
 
 r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
-
-
-
-for(time in 1:9*10){
-  sub.d <- list(tot=t(sample(r.d[time,1:10], size=5)))
+for(time in c(1,3,9)*10){
+  sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
   ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
   post.t <- sample.naive.posterior(ml.t)
   post.t$time = time
@@ -160,17 +162,17 @@ g
 
 end.rcode-->
   
-Likelihood-based, treated like independent samples (no population model)
+**Likelihood**, treated like independent samples (no population model)
 
 
 
-**Bayes**
+
   
 <!--begin.rcode est-recov-bayes,echo=FALSE,cache=TRUE,warning=FALSE  
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
 prior <- NULL
-for(time in 1:9*10){
-  sub.d <- list(tot=t(sample(r.d[time,1:10], size=5)))
+for(time in c(1,3,9)*10){
+  sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
   ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
   post.t <- sample.naive.posterior(ml.t)
   if(is.null(prior)){
@@ -188,7 +190,55 @@ g
 
 end.rcode-->
   
-Bayesian from independent samples
+**Bayes**, treated like "independent" samples
+
+
+#### Trend ####
+
+One "population" sampled every 10 units ...
+
+<!--begin.rcode est-recov-lik-trend,echo=FALSE,cache=TRUE,warning=FALSE  
+g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
+g <- g + geom_line(aes(time, pop1), data=r.d, color='darkgrey')
+g <- g + geom_line(aes(time, pop2), data=r.d, color='darkgrey')
+g <- g + geom_line(aes(time, pop3), data=r.d, color='darkgrey')
+for(time in 1:9*10){
+  sub.d <- list(tot=t(r.d[time,1:3]))
+  ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
+  post.t <- sample.naive.posterior(ml.t)
+  post.t$time = time
+  g <- g + geom_boxplot(aes(time, mu), data=post.t)
+         
+}
+g
+
+end.rcode-->
+**Likelihood**
+
+
+<!--begin.rcode est-recov-bayes-trend,echo=FALSE,cache=TRUE,warning=FALSE  
+g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
+g <- g + geom_line(aes(time, pop1), data=r.d, color='darkgrey')
+g <- g + geom_line(aes(time, pop2), data=r.d, color='darkgrey')
+g <- g + geom_line(aes(time, pop3), data=r.d, color='darkgrey')
+for(time in 1:9*10){
+  sub.d <- list(tot=t(r.d[time,1:3]))
+  ml.t <- mle2(tot~dnorm(mean=mu, sd=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
+  post.t <- sample.naive.posterior(ml.t)
+  if(is.null(prior)){
+    prior <- c(coef(ml.t)['mu'], coef(ml.t)['sigma'])
+  }
+  if(!is.null(prior)){
+    post.t$mu <- sample(post.t$mu, replace=TRUE, prob=dnorm(post.t$mu, mean=prior[1], sd=prior[2]))
+    prior <- c(coef(ml.t)['mu'], coef(ml.t)['sigma'])
+  }
+  post.t$time = time
+  g <- g + geom_boxplot(aes(time, mu), data=post.t)
+         
+}
+g
+end.rcode-->
+**Bayes**
 
 
   
