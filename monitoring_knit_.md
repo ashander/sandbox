@@ -141,9 +141,8 @@ Tradeoff from status (left) to trend (right) with constant effort
   
 <!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE,warning=FALSE  
 require(bbmle)
-time =10
-
 require(ggplot2)
+
 r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
 
@@ -168,10 +167,6 @@ Likelihood-based, treated like independent samples (no population model)
 **Bayes**
   
 <!--begin.rcode est-recov-lik,echo=FALSE,cache=TRUE,warning=FALSE  
-require(bbmle)
-time =10
-
-require(ggplot2)
 r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
 
@@ -182,6 +177,8 @@ for(time in 1:9*10){
   post.t <- sample.naive.posterior(ml.t)
   if(is.null(prior)){
     prior <- c(coef(ml.t)['mu'], coef(ml.t)['sigma'])
+  }
+  if(!is.null(prior)){
     post.t$mu <- sample(post.t$mu, replace=TRUE, prob=dnorm(post.t$mu, mean=prior[1], sd=prior[2]))
   }
   post.t$time = time
