@@ -89,7 +89,7 @@ Three "populations" sampled every 30 units
 
   
 ```
-## Error: replacement has 1000 rows, data has 100
+## Error: initial value in 'vmmin' is not finite
 ```
 ![plot of chunk est-recov-lik](https://github.com/ashander/sandbox/raw/master/est-recov-lik.png)
 
@@ -97,6 +97,9 @@ Three "populations" sampled every 30 units
 **Likelihood**, treated like independent samples (no population model)
 
   
+```
+## Error: 'Sigma' is not positive definite
+```
 ![plot of chunk est-recov-bayes](https://github.com/ashander/sandbox/raw/master/est-recov-bayes.png)
 
   
@@ -107,11 +110,17 @@ Three "populations" sampled every 30 units
 
 One "population" sampled every 10 units ...
 
+```
+## Error: 'Sigma' is not positive definite
+```
 ![plot of chunk est-recov-lik-trend](https://github.com/ashander/sandbox/raw/master/est-recov-lik-trend.png)
 
 **Likelihood**
 
 
+```
+## Error: 'Sigma' is not positive definite
+```
 ![plot of chunk est-recov-bayes-trend](https://github.com/ashander/sandbox/raw/master/est-recov-bayes-trend.png)
 
 **Bayes**
