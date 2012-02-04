@@ -141,7 +141,7 @@ require(ggplot2)
 SAMPLE=c(3,6,9)
 r.m <- melt(r.d, id.vars=c('time'))
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
-g <- g+geom_line(aes(time,mean(value)), data=r.m)
+g <- g+geom_smooth(aes(time,value), data=r.m)
 for(time in SAMPLE*10){
   sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
   ml.t <- mle2(tot~dlnorm(meanlog=mu, sdlog=sigma), data=sub.d, start=list(mu=mean(sub.d$tot), sigma=sd(sub.d$tot)))
@@ -159,7 +159,7 @@ end.rcode-->
   
 <!--begin.rcode est-recov-bayes,echo=FALSE,cache=TRUE,warning=FALSE  
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
-g <- g+geom_line(aes(time,mean(value)), data=r.m)
+g <- g+geom_smooth(aes(time,value), data=r.m)
 prior <- NULL
 for(time in SAMPLE*10){
   sub.d <- list(tot=t(sample(r.d[time,1:10], size=9)))
@@ -189,7 +189,6 @@ One "population" sampled every 10 units ...
 
 <!--begin.rcode est-recov-lik-trend,echo=FALSE,cache=TRUE,warning=FALSE  
 g <- ggplot()+geom_point(aes(time, value), color='darkgrey', data=r.m)
-g <- g+geom_smooth(aes(time,value), data=r.m)
 g <- g + geom_line(aes(time, pop1), data=r.d, color='darkgrey')
 g <- g + geom_line(aes(time, pop2), data=r.d, color='darkgrey')
 g <- g + geom_line(aes(time, pop3), data=r.d, color='darkgrey')
