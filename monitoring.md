@@ -89,9 +89,6 @@ Three "populations" sampled every 30 units
 
   
 ```
-## Error: replacement has 1000 rows, data has 100
-```
-```
 ## Error: initial value in 'vmmin' is not finite
 ```
 ![plot of chunk est-recov-lik](https://github.com/ashander/sandbox/raw/master/est-recov-lik.png)
@@ -101,7 +98,7 @@ Three "populations" sampled every 30 units
 
   
 ```
-## Error: initial value in 'vmmin' is not finite
+## Error: 'Sigma' is not positive definite
 ```
 ![plot of chunk est-recov-bayes](https://github.com/ashander/sandbox/raw/master/est-recov-bayes.png)
 
